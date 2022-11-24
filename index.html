@@ -12,8 +12,8 @@
 
 <script>
 
-    
     const options = Math.floor(Math.random() * 3);
+
     function getComputerChoice() {
         if (options == 1) {
             return 'rock';
@@ -22,11 +22,32 @@
         } else {
             return 'scissor';
         }
-
-    function playerRound() {
-
-    }    
     }
+
+    function playRound() {
+        const playerChoice = prompt('Pick a hand(rock, paper, or scissor)');
+
+        if (playerChoice == getComputerChoice()) {
+            alert('Its a tie');
+        } else if (playerChoice == 'Rock' && getComputerChoice() == "paper") {
+            alert('You lose');
+        } else if (playerChoice == 'Paper' && getComputerChoice() == 'scissor') {
+            alert('You lose');
+        } else if (playerChoice == 'Scissor' && getComputerChoice() == 'rock') {
+            alert('You lose');
+        } else {
+            alert('You win');
+        }
+    }
+
+    function game() {
+        for (let i = 0; i < 3; i++) {
+            playerRound();
+        }
+    }    
+
+    game();
+    
 
 </script>    
 </body>
