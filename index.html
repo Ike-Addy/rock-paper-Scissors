@@ -5,50 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
     <title>Rock Paper Scissor Game</title>
 </head>
 <body>
-
-
-<script>
-
-    const options = Math.floor(Math.random() * 3);
-
-    function getComputerChoice() {
-        if (options == 1) {
-            return 'rock';
-        } else if (options == 2) {
-            return 'paper';
-        } else {
-            return 'scissor';
-        }
-    }
-
-    function playRound() {
-        const playerChoice = prompt('Pick a hand(rock, paper, or scissor)');
-
-        if (playerChoice == getComputerChoice()) {
-            alert('Its a tie');
-        } else if (playerChoice == 'Rock' && getComputerChoice() == "paper") {
-            alert('You lose');
-        } else if (playerChoice == 'Paper' && getComputerChoice() == 'scissor') {
-            alert('You lose');
-        } else if (playerChoice == 'Scissor' && getComputerChoice() == 'rock') {
-            alert('You lose');
-        } else {
-            alert('You win');
-        }
-    }
-
-    function game() {
-        for (let i = 0; i < 3; i++) {
-            playerRound();
-        }
-    }    
-
-    game();
+    <h1>ROCK PAPER SCISSOR GAME</h1>
+    <h2>Choose Your Hand</h2>
+    <h3>Best Of 5</h3>
     
+<!--Buttons for player options-->
+    
+    <button id="rockBtn">👊</button>
+    <button id="paperBtn">🖐</button>
+    <button id="scissorBtn">✌</button>    
 
-</script>    
+    <!--Scoreboard displaying player choice, computer choice, and scoreboard-->
+ 
+    <p id="playerSelection">Player: ❔</p>
+    <p id="computerSelection">Computer: ❔</p>
+    <p id="roundWinner">Round Winner: ❔</p>
+    <p id="playerScore">Player Score: ❔</p>
+    <p id="computerScore">Computer Score: ❔</p>
+   
+
 </body>
 </html>
