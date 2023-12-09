@@ -1,40 +1,43 @@
-function playRound (player, comp) {
-    player = playerSelection();
-    comp = computerSelection();
+const buttons = document.querySelectorAll('button');
+const results = document.querySelector('.results');
+const choices = document.querySelector('.choices');
 
-    if (player == comp) {
-        alert('It\'s a tie');
-    } else if (player == 'rock' && comp == 'scissor') {
-        alert('You win!');
-    } else if (player == 'scissor' && comp == 'paper') {
-        alert('You win!');
-    } else if (player == 'paper' && comp == 'rock') {
-        alert('You win!');
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        choices.textContent = `YOU chose ${playerSelection} and the COMPUTER chose ${computerSelection} `;
+        results.textContent = 'Its a tie'
+    } else if (playerSelection == 'rock' && computerSelection == 'scissor') {
+        choices.textContent = `YOU chose ${playerSelection} and the COMPUTER chose ${computerSelection} `;
+        results.textContent = 'You win!';
+    } else if (playerSelection == 'scissor' && computerSelection == 'paper') {
+        choices.textContent = `YOU chose ${playerSelection} and the COMPUTER chose ${computerSelection} `;
+        results.textContent = 'You win!';
+    } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+        choices.textContent = `YOU chose ${playerSelection} and the COMPUTER chose ${computerSelection} `;
+        results.textContent = 'You win!';
     } else {
-        alert('You lose D:');
-    }
-}
+        choices.textContent = `YOU chose ${playerSelection} and the COMPUTER chose ${computerSelection} `;
+        results.textContent = 'You lose';
+    };
+};
 
-function computerSelection () {
-    let aiChoice = Math.floor(Math.random() * 3)
-    if (aiChoice === 0) {
-        aiChoice = 'rock';
-    } else if (aiChoice === 1) {
-        aiChoice = 'paper';
-    } else if (aiChoice === 2) {
-        aiChoice = 'scissor';
+function getComputerSelection () {
+    let randomChoice = Math.floor(Math.random() * 3);
+    if (randomChoice === 0) {
+        return 'rock';
+    } else if (randomChoice === 1) {
+        return 'paper';
+    } else if (randomChoice === 2) {
+        return 'scissor';
     } else {
-        aiChoice = null;
-    }
-    alert(`The computer chose ${aiChoice}`)
-    return aiChoice;
-}
+        return 'ERROR'
+    };
+};
 
-function playerSelection () {
-    let playerChoice = prompt('Rock, Paper, or Scissor?')
-    alert(`You chose ${playerChoice}`);
-    return playerChoice;
-}
-
-playRound();
-
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id;
+        let computerSelection = getComputerSelection();
+        playRound(playerSelection, computerSelection);
+    })
+});
